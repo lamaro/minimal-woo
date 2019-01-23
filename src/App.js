@@ -13,8 +13,6 @@ var WooCommerce = new WooCommerceAPI({
 });
 
 
-
-
 class App extends Component {
   constructor(){
     super();
@@ -24,23 +22,27 @@ class App extends Component {
   }
 
   componentDidMount() {
-    WooCommerce.get('products', function(err, data, res) {
+    WooCommerce.getAsync('products').then(function(result) {
       this.setState({
-        productos: res
+        productos: JSON.parse(result.toJSON().body)
       })
-      console.log(res);
-    }.bind(this))
+    }.bind(this));
+    console.log(this.state.productos);
   }
   render() {
     let productos = this.state.productos.map((prod, index) => {
       return(
         <div key={index}>
+          <img style={{width:'300px'}} src={prod.images[0].src} alt={prod.id}/>
+          <h2>{prod.name}</h2>
+           <h3>{prod.price}</h3>
+           <p>{prod.description}</p>
         </div>
-      );
+      )
     })
     return (
       <div className="App">
-
+        {productos}
       </div>
     );
   }
