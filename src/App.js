@@ -5,7 +5,7 @@ import './App.css';
 var WooCommerceAPI = require('woocommerce-api');
 
 var WooCommerce = new WooCommerceAPI({
-  url: 'http://bailarincosmico.com.ar/clientes/dummy', // Your store URL
+  url: 'https://bailarincosmico.com.ar/clientes/dummy', // Your store URL
   consumerKey: 'ck_725c120e481d4c640b0f56ce40e28888ed5e5a40', // Your consumer key
   consumerSecret: 'cs_1e2b0809f7a63303231eaf5b6d289e9f10243221', // Your consumer secret
   wpAPI: true, // Enable the WP REST API integration
