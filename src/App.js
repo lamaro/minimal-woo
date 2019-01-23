@@ -22,11 +22,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    WooCommerce.getAsync('products').then(function(result) {
+    WooCommerce.get('products', function(err, data, res) {
       this.setState({
-        productos: JSON.parse(result.toJSON().body)
+        productos: JSON.parse(data.toJSON().body)
       })
     }.bind(this));
+
     console.log(this.state.productos);
   }
   render() {
